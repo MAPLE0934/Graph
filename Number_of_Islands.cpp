@@ -7,15 +7,20 @@ using namespace std;
 
 bool explore(vector<vector<char>>& islands, int row, int col, unordered_set<string>& visited){
     bool rowBounds = 0 <= row && row < islands.size();
-    bool colBounds = 0 <= col && row < islands[0].size();
+    bool colBounds = 0 <= col && col < islands[0].size();
 
     if(!rowBounds || !colBounds) return false;
     if(islands[row][col] == 'W') return false;
     string pos = to_string(row) + ',' + to_string(col);
     
     if(visited.find(pos) != visited.end()) return false;
+    visited.insert(pos);
+    explore(islands,row - 1, col, visited);
+    explore(islands,row + 1, col, visited);
+    explore(islands,row, col - 1, visited);
+    explore(islands,row, col + 1, visited);
 
-    
+    return true;
 }
 int main(){
     vector<vector<char>> islands;
@@ -29,7 +34,7 @@ int main(){
                {'L', 'L', 'W', 'W', 'W'},};
     for(int row = 0; row<islands.size(); row++){
         for(int col = 0; col<islands[0].size(); col++){
-            count += explore(islands, row, col, visited);
+            count += explore(islands, row, col, visited)?1:0;
         }
     }
     cout<<count;
