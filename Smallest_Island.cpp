@@ -22,10 +22,10 @@ int explore(vector<vector<char>>& islands, int row, int col, unordered_set<strin
     return size;
 }
 int main(){
-    vector<vector<char>> islands =  {{'W', 'L', 'W', 'W', 'W'},
-                                     {'W', 'L', 'W', 'W', 'W'},
-                                     {'W', 'W', 'W', 'L', 'W'},
-                                     {'W', 'W', 'L', 'L', 'W'},
+    vector<vector<char>> islands =  {{'L', 'W', 'W', 'L', 'W'},
+                                     {'L', 'W', 'W', 'L', 'L'},
+                                     {'W', 'L', 'W', 'L', 'W'},
+                                     {'W', 'L', 'W', 'L', 'W'},
                                      {'L', 'W', 'W', 'L', 'L'},
                                      {'L', 'L', 'W', 'W', 'W'}};
     unordered_set<string> visited;
